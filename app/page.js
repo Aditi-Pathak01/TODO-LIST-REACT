@@ -22,22 +22,21 @@ function page() {
   let renderTask = "No Task Available!";
   if (mainTask.length > 0) {
     renderTask = mainTask.map((t, i) => {
-      console.log(i);
       return (
         <ul>
           <li key={i} className="mt-3">
-            <div className="flex justify-between w-full p-8">
-              <h1 className="text-4xl">
+            <div className="flex justify-around items-center w-full">
+              <h1 className="text-4xl text-white font-semibold">
                 {i + 1}. {t.tasks}
               </h1>
-              <h1>{t.desc}</h1>
+              <h1 className="text-gray-500">{t.desc}</h1>
               <button
-                className="px-4 py-2 rounded-full bg-orange-500 text-white"
+                className="rounded-full bg-red-800 text-white flex items-start justify-center h-12 w-12"
                 onClick={() => {
                   deleteTask(i);
                 }}
               >
-                Done!
+                x
               </button>
             </div>
           </li>
@@ -47,31 +46,31 @@ function page() {
   }
   return (
     <>
-      <h1 className="text-5xl font-bold text-center font-serif">Todo-List</h1>
-      <form className="p-10 mx-auto my-12 w-1/2 border border-white rounded-md flex items-start gap-3 justify-between">
+      <h1 className="text-5xl font-bold text-center text-white font-serif">Todo-List</h1>
+      <form className="p-10 mx-auto my-10 w-3/4 flex justify-between items-start gap-3">
         <input
           type="text"
           placeholder="Enter Your Task"
-          className="w-1/2 h-12 p-5 bg-transparent border border-white rounded-full outline-none text-slate-400 text-xl"
+          className="w-1/2 h-12 p-5 bg-white rounded-full outline-none text-black-950 text-xl"
           value={tasks}
           onChange={(e) => setTasks(e.target.value)}
         />
         <input
           type="text"
           placeholder="Enter Your Descripton"
-          className="p-2 border border-white bg-transparent  outline-none text-slate-400 text-xl rounded-lg"
+          className="w-1/2 h-12 p-5 bg-white rounded-full outline-none text-black-950 text-xl"
           value={desc}
           onChange={(e) => setDesc(e.target.value)}
         />
         <button
-          className="w-1.5 h-12 p-9 rounded-full bg-orange-500 text-white flex justify-center items-center text-4xl font-semibold"
+          className="text-white text-3xl font-semibold bg-orange-700 h-14 w-16 rounded-full flex justify-center items-center"
           onClick={handleSubmit}
         >
           +
         </button>
       </form>
-      <div className="p-5 h-16 w-full mx-auto bg-transparent">
-        <h1 className="text-orange-500 text-2xl text-center pt-8">
+      <div className="p-3 h-16 w-1/2 mx-auto bg-transparent">
+        <h1 className="text-4xl text-center pt-2 text-white">
           {renderTask}
         </h1>
       </div>
